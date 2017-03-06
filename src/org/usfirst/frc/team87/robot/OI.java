@@ -18,9 +18,18 @@ public class OI {
 		// button.whenPressed(new ExampleCommand());
 		// button.whileHeld(new ExampleCommand());
 		// button.whenReleased(new ExampleCommand());
+		
+		winchToggle.toggleWhenPressed(new climb());
+		intakeForward.whileHeld(new intakeForward());
+		intakeReverse.whileHeld(new intakeReverse());
+		output.whenPressed(new output());
+		
 	}
 
 	public boolean getSlowDown() {
 		return gamepad.getRawButton(RobotMap.SLOWDOWN);
+	}
+	public double getWinchSpeed() {
+		return joystick.getRawAxis(RobotMap.WINCH);	
 	}
 }

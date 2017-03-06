@@ -44,5 +44,6 @@ public class RobotMap {
 	// Variables //
 	///////////////
 	public static final double INCH_TO_ENC = 256 / (6 * Math.PI); //Multiply by inches to get the equivalent in encoder value.
-	public static final double SLOWDOWNSPEED = 0.75;
+	public static final double SLOWDOWNSPEED = 0.75; //Percentage to slow down to when slowDown button is pressed.
+	public static final double WINCHTHRESHOLD = 0.05; //Required minimum on axis to enable winch
 }
