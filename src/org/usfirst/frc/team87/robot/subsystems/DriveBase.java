@@ -34,7 +34,7 @@ public class DriveBase extends Subsystem {
 
 	public void drive(double left, double right) {
 		if (oi.getSlowDown() && DriverStation.getInstance().isOperatorControl()) {
-			diabloDrive.tankDrive(-0.75 * left, 0.75 * right);
+			diabloDrive.tankDrive(RobotMap.SLOWDOWNSPEED * left, RobotMap.SLOWDOWNSPEED * right);
 		} else {
 			diabloDrive.tankDrive(-left, right);
 		}

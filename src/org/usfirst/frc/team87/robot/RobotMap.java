@@ -28,9 +28,9 @@ public class RobotMap {
 	public static final int WINCHL = 1; // TalonSRX and Van Door
 	public static final int WINCHR = 2; // TalonSRX and Van Door
 
-	/////////////////////
-	// SENSORS / OTHER //
-	/////////////////////
+	/////////////
+	// SENSORS //
+	/////////////
 	public static final int ENC_l_1 = 6; // Encoders use 2 cables.
 	public static final int ENC_l_2 = 7; // In theory the placement of the ports
 	public static final int ENC_r_1 = 8; // does not matter. This may need some
@@ -39,5 +39,10 @@ public class RobotMap {
 	public static final int ULTRA_OUT = 5; // switch these two port numbers.
 	public static final int LIMITTOP = 1;
 	public static final int LIMITBOTTOM = 0;
+	
+	///////////////
+	// Variables //
+	///////////////
 	public static final double INCH_TO_ENC = 256 / (6 * Math.PI); //Multiply by inches to get the equivalent in encoder value.
+	public static final double SLOWDOWNSPEED = 0.75;
 }
