@@ -1,15 +1,33 @@
-
 package org.usfirst.frc.team87.robot;
 
+import org.usfirst.frc.team87.robot.commands.Climb;
+import org.usfirst.frc.team87.robot.subsystems.DriveBase;
+import org.usfirst.frc.team87.robot.subsystems.Winch;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Robot extends IterativeRobot {
 	public static OI oi;
 
+	////////////////
+	// SUBSYSTEMS //
+	////////////////
+	public static DriveBase drivebase;
+	public static Winch winch;
+
+	//////////////
+	// COMMANDS //
+	//////////////
+	Command climb;
+
 	@Override
 	public void robotInit() {
 		oi = new OI();
+		drivebase = new DriveBase();
+		winch = new Winch();
+		climb = new Climb();
 	}
 
 	@Override
@@ -20,6 +38,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		oi.autoSelectorLogic();
 	}
 
 	@Override

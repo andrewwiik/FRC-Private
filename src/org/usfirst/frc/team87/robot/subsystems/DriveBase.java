@@ -3,7 +3,6 @@ package org.usfirst.frc.team87.robot.subsystems;
 import org.usfirst.frc.team87.robot.OI;
 import org.usfirst.frc.team87.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -30,11 +29,7 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void drive(double left, double right) {
-		if (oi.getSlowDown() && DriverStation.getInstance().isOperatorControl()) {
-			diabloDrive.tankDrive(RobotMap.SLOWDOWNSPEED * left, RobotMap.SLOWDOWNSPEED * right);
-		} else {
-			diabloDrive.tankDrive(-left, right);
-		}
+		diabloDrive.tankDrive(-left, right);
 	}
 
 	public void initDefaultCommand() {
