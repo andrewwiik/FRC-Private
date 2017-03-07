@@ -1,6 +1,5 @@
 package org.usfirst.frc.team87.robot.subsystems;
 
-import org.usfirst.frc.team87.robot.OI;
 import org.usfirst.frc.team87.robot.RobotMap;
 
 import com.ctre.CANTalon;
@@ -9,12 +8,10 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Winch extends Subsystem {
-	public static OI oi;
 	static CANTalon winchL;
 	static CANTalon winchR;
 
 	public Winch() {
-		oi = new OI();
 		winchL = new CANTalon(RobotMap.WINCHL);
 		winchR = new CANTalon(RobotMap.WINCHR);
 	}

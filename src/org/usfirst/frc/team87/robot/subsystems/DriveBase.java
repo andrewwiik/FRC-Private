@@ -1,6 +1,5 @@
 package org.usfirst.frc.team87.robot.subsystems;
 
-import org.usfirst.frc.team87.robot.OI;
 import org.usfirst.frc.team87.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -8,7 +7,6 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveBase extends Subsystem {
-	public static OI oi;
 	static Spark driveR1;
 	static Spark driveR2;
 	static Spark driveL1;
@@ -16,7 +14,6 @@ public class DriveBase extends Subsystem {
 	RobotDrive diabloDrive;
 
 	public DriveBase() {
-		oi = new OI();
 		driveR1 = new Spark(RobotMap.DRIVE_R1);
 		driveR1.enableDeadbandElimination(true);
 		driveR2 = new Spark(RobotMap.DRIVE_R2);

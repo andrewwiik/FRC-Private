@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Robot extends IterativeRobot {
 	public static OI oi;
+	public static AutonomousSelector autoselector;
 
 	////////////////
 	// SUBSYSTEMS //
@@ -17,17 +18,11 @@ public class Robot extends IterativeRobot {
 	public static DriveBase drivebase;
 	public static Winch winch;
 
-	//////////////
-	// COMMANDS //
-	//////////////
-	Command climb;
-
 	@Override
 	public void robotInit() {
 		oi = new OI();
 		drivebase = new DriveBase();
 		winch = new Winch();
-		climb = new Climb();
 	}
 
 	@Override
@@ -38,7 +33,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		oi.autoSelectorLogic();
+		autoselector.autoSelectorLogic();
 	}
 
 	@Override
