@@ -1,6 +1,6 @@
 package org.usfirst.frc.team87.robot;
 
-import org.usfirst.frc.team87.robot.commands.Climb;
+import org.usfirst.frc.team87.robot.commands.TeleDrive;
 import org.usfirst.frc.team87.robot.subsystems.DriveBase;
 import org.usfirst.frc.team87.robot.subsystems.Winch;
 
@@ -17,6 +17,11 @@ public class Robot extends IterativeRobot {
 	////////////////
 	public static DriveBase drivebase;
 	public static Winch winch;
+	
+	//////////////
+	// COMMANDS //
+	//////////////
+	Command TeleDrive;
 
 	@Override
 	public void robotInit() {
@@ -48,11 +53,13 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-
+		new TeleDrive().start();
 	}
 
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		oi.backwardsCheck();
+
 	}
 }

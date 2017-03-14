@@ -1,5 +1,6 @@
 package org.usfirst.frc.team87.robot.subsystems;
 
+import org.usfirst.frc.team87.robot.Robot;
 import org.usfirst.frc.team87.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -30,6 +31,6 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		// setDefaultCommand(new Drive());
+
 	}
 }
