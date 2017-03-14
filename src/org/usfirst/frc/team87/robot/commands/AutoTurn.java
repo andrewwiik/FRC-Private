@@ -1,5 +1,7 @@
 package org.usfirst.frc.team87.robot.commands;
 
+import org.usfirst.frc.team87.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -7,30 +9,39 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoTurn extends Command {
 
-    public AutoTurn() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+	private double angle;
+	private double speed;
+	private double threshold = 3;
+	
+    public AutoTurn(double angle_in, double speed_in) {
+    	this.angle = angle_in;
+    	this.speed = speed_in;
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.driveTrain.resetGyro();
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if (angle > 0){
+    		// If we are turning Right
+    		Robot.driveTrain.tankDrive(this.speed, -this.speed);
+    	} else {
+    		// If we are turning Left
+    		Robot.driveTrain.tankDrive(-this.speed, this.speed);
+    	}
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	double offset = Math.abs(this.angle - Robot.driveTrain.getGyro());
+        return (offset < threshold);
     }
 
-    // Called once after isFinished returns true
     protected void end() {
+    	Robot.driveTrain.tankDrive(0, 0);
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.driveTrain.tankDrive(0, 0);
     }
 }

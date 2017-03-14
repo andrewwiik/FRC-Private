@@ -1,21 +1,26 @@
 package org.usfirst.frc.team87.robot;
 
 import org.usfirst.frc.team87.robot.commands.TeleDrive;
-import org.usfirst.frc.team87.robot.subsystems.DriveBase;
+import org.usfirst.frc.team87.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team87.robot.subsystems.Winch;
+import org.usfirst.frc.team87.robot.testing.TestingCommandGroup;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Robot extends IterativeRobot {
 	public static OI oi;
-	public static AutonomousSelector autoselector;
+	public static AutonomousSelection autonomousSelection;
+	public CommandGroup autonomousCommand;
+	public TestingCommandGroup testCommand = new TestingCommandGroup();
+	
 
 	////////////////
 	// SUBSYSTEMS //
 	////////////////
-	public static DriveBase drivebase;
+	public static DriveTrain driveTrain;
 	public static Winch winch;
 
 	//////////////
@@ -26,8 +31,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		drivebase = new DriveBase();
+		driveTrain = new DriveTrain();
 		winch = new Winch();
+		autonomousSelection = new AutonomousSelection();
+		autonomousSelection.setupSelections();
 	}
 
 	@Override
@@ -38,14 +45,25 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		autoselector.autoSelectorLogic();
 	}
 
 	@Override
 	public void autonomousInit() {
+		driveTrain.resetGyro();
+		driveTrain.resetEncoders();
 
+		driveTrain.invertMotors(true);
+		// Get the autonomous command group that should be run
+		autonomousCommand = autonomousSelection.getCommandGroupForSelection();
+		
+		// make sure the returned value is not null
+		if (autonomousCommand != null) {
+			autonomousCommand.start();
+		}
 	}
-
+	/**
+	 * This function is called periodically during autonomous.
+	 */
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
@@ -53,6 +71,8 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
+		driveTrain.invertMotors(false);
+		driveTrain.resetGyro();
 		new TeleDrive().start();
 	}
 
@@ -61,5 +81,22 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		oi.backwardsCheck();
 
+	}
+
+	/**
+	 * This is the initialization for testing. Any test startup commands should go here.
+	 */
+	@Override
+	public void testInit() {
+		driveTrain.invertMotors(true);
+		testCommand.start();
+	}
+	
+	/**
+	 * This function is called periodically during test mode
+	 */
+	@Override
+	public void testPeriodic() {
+		Scheduler.getInstance().run();
 	}
 }

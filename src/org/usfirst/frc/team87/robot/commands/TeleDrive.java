@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TeleDrive extends Command {
 
 	public TeleDrive() {
-		requires(Robot.drivebase);
+		requires(Robot.driveTrain);
 	}
 
 	protected void execute() {
@@ -20,9 +20,9 @@ public class TeleDrive extends Command {
 			rightSpeed *= RobotMap.SLOWDOWNSPEED;
 		}
 		if (Robot.oi.getBackwards()) {
-			Robot.drivebase.drive(-rightSpeed, -leftSpeed);
+			Robot.driveTrain.tankDrive(-rightSpeed, -leftSpeed);
 		} else {
-			Robot.drivebase.drive(leftSpeed, rightSpeed);
+			Robot.driveTrain.tankDrive(leftSpeed, rightSpeed);
 		}
 	}
 
@@ -31,10 +31,10 @@ public class TeleDrive extends Command {
 	}
 
 	protected void end() {
-		Robot.drivebase.drive(0, 0);
+		Robot.driveTrain.tankDrive(0, 0);
 	}
 
 	protected void interrupted() {
-		Robot.drivebase.drive(0, 0);
+		Robot.driveTrain.tankDrive(0, 0);
 	}
 }
