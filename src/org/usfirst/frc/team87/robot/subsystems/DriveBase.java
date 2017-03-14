@@ -15,15 +15,12 @@ public class DriveBase extends Subsystem {
 	RobotDrive diabloDrive;
 
 	public DriveBase() {
-		driveR1 = new Spark(RobotMap.DRIVE_R1);
-		driveR1.enableDeadbandElimination(true);
-		driveR2 = new Spark(RobotMap.DRIVE_R2);
-		driveR2.enableDeadbandElimination(true);
-		driveL1 = new Spark(RobotMap.DRIVE_L1);
-		driveL1.enableDeadbandElimination(true);
-		driveL2 = new Spark(RobotMap.DRIVE_L2);
-		driveL2.enableDeadbandElimination(true);
-		diabloDrive = new RobotDrive(driveL1, driveR1, driveL2, driveR2);
+		Spark[] motors = new Spark[4];
+		for (int i = 0; i < motors.length; i++) {
+			motors[i] = new Spark(RobotMap.DRIVEMOTORS[i]);
+			motors[i].enableDeadbandElimination(true);
+		}
+		diabloDrive = new RobotDrive(motors[0], motors[2], motors[1], motors[3]);
 	}
 
 	public void drive(double left, double right) {
@@ -31,6 +28,5 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-
 	}
 }

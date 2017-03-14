@@ -29,6 +29,14 @@ public class OI {
 		// output.whenPressed(new output());
 	}
 
+	public double getLeftSpeed() {
+		return gamepad.getRawAxis(RobotMap.LEFTDRIVECONTROL);
+	}
+
+	public double getRightSpeed() {
+		return gamepad.getRawAxis(RobotMap.RIGHTDRIVECONTROL);
+	}
+
 	public static void backwardsCheck() {
 		if (backwardsButton && !gamepad.getRawButton(RobotMap.REVERSE)) {
 			backwardsButton = false;
@@ -36,14 +44,6 @@ public class OI {
 			backwardsButton = true;
 			backwardsToggle = !backwardsToggle;
 		}
-	}
-
-	public double getLeftSpeed() {
-		return gamepad.getRawAxis(RobotMap.LEFTDRIVECONTROL);
-	}
-
-	public double getRightSpeed() {
-		return gamepad.getRawAxis(RobotMap.RIGHTDRIVECONTROL);
 	}
 
 	public boolean getBackwards() {

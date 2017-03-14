@@ -19,10 +19,7 @@ public class RobotMap {
 	////////////
 	// MOTORS //
 	////////////
-	public static final int DRIVE_L1 = 0; // Spark and CIM
-	public static final int DRIVE_L2 = 1; // Spark and CIM
-	public static final int DRIVE_R1 = 3; // Spark and CIM
-	public static final int DRIVE_R2 = 4; // Spark and CIM
+	public static final int[] DRIVEMOTORS = { 0, 1, 3, 4 }; // Sparks and CIMs {L1, L2, R1, R2}
 	public static final int FUEL_IN = 2; // VictorSP and Snowblower
 	public static final int FUEL_OUT = 2; // Spike and Window Motor
 	public static final int WINCHL = 1; // TalonSRX and Van Door
@@ -39,11 +36,12 @@ public class RobotMap {
 	public static final int ULTRA_OUT = 5; // switch these two port numbers.
 	public static final int LIMITTOP = 1;
 	public static final int LIMITBOTTOM = 0;
-	
+
 	///////////////
 	// Variables //
 	///////////////
-	public static final double INCH_TO_ENC = 256 / (6 * Math.PI); //Multiply by inches to get the equivalent in encoder value.
+	public static final double WHEELDIAMETER = 6;
+	public static final double INCH_TO_ENC = 256 / (WHEELDIAMETER * Math.PI); //Multiply by inches to get the equivalent in encoder value.
 	public static final double SLOWDOWNSPEED = 0.75; //Percentage to slow down to when slowDown button is pressed.
 	public static final double WINCHTHRESHOLD = 0.05; //Required minimum on axis to enable winch
 	public static int startingSide;

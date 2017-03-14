@@ -17,7 +17,7 @@ public class Robot extends IterativeRobot {
 	////////////////
 	public static DriveBase drivebase;
 	public static Winch winch;
-	
+
 	//////////////
 	// COMMANDS //
 	//////////////
