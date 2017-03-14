@@ -1,18 +1,31 @@
 package org.usfirst.frc.team87.robot.subsystems;
 
+import org.usfirst.frc.team87.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
 public class Output extends Subsystem {
-
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	static Relay fuelOut;
+	
+	public Output(){
+		fuelOut = new Relay(RobotMap.FUEL_OUT);
+	}
+	
+	public void output(double speed){
+		if(speed == 1){
+			fuelOut.set(Relay.Value.kForward);
+		}else if(speed == -1){
+			fuelOut.set(Relay.Value.kReverse);
+		}else{
+			fuelOut.set(Relay.Value.kOff);
+		}
+	}
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     }
 }
 
