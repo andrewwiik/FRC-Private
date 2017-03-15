@@ -2,7 +2,7 @@
 
 ## Robot Build
 
-In our robot build we decided to use 4 Spark Motors, putting 2 motors on each of our rear wheels with a chain connecting the 2 rear wheels to the 2 front wheels, this gave us a tank-drive like system. Our Gear holder, nicknamed the "cereal box" is on the rear of robot with our fuel collecting mechanism being on the front of our robot. At full speed our robot goes approximately 14ft/sec. For our whinch we are using 2 talon motor controllers.
+In our robot build we decided to use 4 Spark Motor Controllers, putting 2 motors on each of our rear wheels with a chain connecting the 2 rear wheels to the 2 front wheels, this gave us a tank-drive like system. Our Gear holder, nicknamed the "cereal box" is on the rear of robot with our fuel collecting mechanism being on the front of our robot. At full speed our robot goes approximately 14ft/sec. For our whinch we are using 2 talon motor controllers.
 
 
 ## Robot Modes
