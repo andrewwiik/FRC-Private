@@ -23,9 +23,7 @@ public class AutonomousSelection {
 										 "Left Gear Peg (don't backup)", 
 										 "Center Gear Peg (don't backup)", 
 										 "Right Gear Peg (don't backup)", 
-										 "Cross Baseline from Side Position", 
-										 "Cross Baseline from Center Position (Go Right)",
-										 "Cross Baseline from Center Position (Go Left)"};
+										 "Cross Baseline"};
 		
 		dashboard.putStringArray("Auto List",choices);
 	}
@@ -49,11 +47,7 @@ public class AutonomousSelection {
 				return new CenterGearAuto(selection.contains("backup after"));
 			}
 		} else {
-			if (selection.contains("side")) {
-				return new AutoBaselineSide();
-			} else {
-				return new AutoBaselineCenter(selection.contains("right"));
-			}
+			return new AutoBaseline();
 		}
 	}
 }

@@ -5,9 +5,9 @@ import org.usfirst.frc.team87.robot.commands.AutoDriveDistance;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class AutoBaselineSide extends CommandGroup {
+public class AutoBaseline extends CommandGroup {
 
-    public AutoBaselineSide() {
+    public AutoBaseline() {
 
     	/* P.E.B wanted there to be autonomous mode where the robot just crosses
     	 * the baseline, so this is exactly that. This CommandGroup is for if the
@@ -15,7 +15,7 @@ public class AutoBaselineSide extends CommandGroup {
     	 * feet forward.
     	 */
     	
-    	addSequential(new AutoDriveDistance(120.0, RobotMap.AUTO_MOVE_FAST_SPEED));
+    	addSequential(new AutoDriveDistance(180, RobotMap.AUTO_MOVE_FAST_SPEED));
     	
     }
 }
