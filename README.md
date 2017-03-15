@@ -1,4 +1,4 @@
-# RVR87 2017 GearWorks Robot Code
+# 2017 GearWorks Robot Code for RVR87
 
 ## Robot Build
 
@@ -13,7 +13,7 @@ In our robot build we decided to use 4 Spark Motor Controllers, putting 2 motors
 Testing Mode is commonly used to test the function of the robot before a competition or just when the team wants to make sure all of the vital systems and code for their robot is functioning properly. Our testing mode includes simple driving and turning commands that are executed as if the robot is in autonomous mode. In our testing mode the various tests are iterated through the use of the **START** button on our Logitech F310 Gamepad. Our tests assume the robots gear holder is facing away from the wall. Our tests are executed in the following order:
 
 1. Drive Forward 3 Feet
-2. Drive backwards 1 Foor
+2. Drive Backwards 1 Foor
 3. Turn 90 Degrees to the Left
 4. Turn 180 Degrees to the Right
 
