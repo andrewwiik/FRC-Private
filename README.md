@@ -21,18 +21,22 @@ Testing Mode is commonly used to test the function of the robot before a competi
 ### Autonomous Mode
 
 #### Summary
-Autonomous Mode is used during the first 15 seconds of a match where the robot is tasked with performing without any human input. In the competition this year it was obvious that the most benificial autonmous action would be taking the gear that is pre-loaded onto the robot and placing it on one of the pegs. Our autonomous mode consists of a total of 6 options that the Drive Team may choose to use for any particular match and they are as follows:
+Autonomous Mode is used during the first 15 seconds of a match where the robot is tasked with performing without any human input. In the competition this year it was obvious that the most benificial autonomous action would be taking the gear that is pre-loaded onto the robot and placing it on one of the pegs. Our autonomous mode consists of a total of 10 options that the Drive Team may choose to use for any particular match and they are as follows:
 
 
 1. When the Robot starts in the **Right** starting position
    * Place the gear on the right peg and backup
    * Place the gear on the right peg and don't backup
+   * Cross the baseline
 2. When the Robot starts in the **Center** starting position
    * Place the gear on the center peg and backup
    * Place the gear on the center peg and don't backup
+   * Cross the baseline on the right of the airship
+   * Cross the baseline on the left of the airship
 3. When the Robot starts in the **Left** starting position
    * Place the gear on the left peg and backup
    * Place the gear on the left peg and don't backup
+   * Cross the baseline
    
 When in autonomous our motors are inverted because our gear holder aka the "cereal box" is on the rear of our robot. After autonomous mode is finished the motors are un-inverted in preperation for the robot most likely entering teleop mode.
 

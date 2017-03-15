@@ -79,6 +79,7 @@ public class RobotMap {
 	public static final double AUTO_MOVE_SPEED = 0.6;
 	public static final double AUTO_MOVE_MEDIUM_SPEED = 0.52;
 	public static final double AUTO_MOVE_SLOW_SPEED = 0.40;
+	public static final double AUTO_MOVE_FAST_SPEED = 0.75;
 	
 	public static final double TURN_SLOW_SPEED = 0.52;
 	public static final double TURN_MED_SPEED = 0.54;
