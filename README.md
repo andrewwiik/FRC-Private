@@ -44,3 +44,8 @@ When in autonomous our motors are inverted because our gear holder aka the "cere
 
 #### Summary
 Teleop Mode is used for the remainder of the match after the autonomous mode portion is complete. For the tele-operated portion of the match we are using a Logitech F310 Gamepad as our primary input device to control our robot. The mapping of the controls on the gamepad are as depicted below:
+
+![Logitech F310 Gamepad Map](https://raw.githubusercontent.com/morechocolate2017/RobotCommandCode2017/master/gamepad-map.png "Logitech F310 Gamepad Map")
+
+
+We use a seperate joystick for the mechanical operations of our robot such as operating the winch, and collecting/dispensing fuel.
