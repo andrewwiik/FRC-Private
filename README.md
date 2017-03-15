@@ -39,6 +39,18 @@ Autonomous Mode is used during the first 15 seconds of a match where the robot i
    
 When in autonomous our motors are inverted because our gear holder aka the "cereal box" is on the rear of our robot. After autonomous mode is finished the motors are un-inverted in preperation for the robot most likely entering teleop mode.
 
+#### Selecting the Autonomous Mode
+
+##### Step 1
+Make sure the driver station is using the "Default" Dashboard Type as pictured below.
+
+![Autonomous Mode Selection Step 1](https://raw.githubusercontent.com/morechocolate2017/RobotCommandCode2017/master/autonomous-dashboard-type.png "Dashboard Type Selection")
+
+##### Step 2
+Select the desired autonomous mode using the field highlighted in the picture below.
+
+![Autonomous Mode Selection Step 2](https://raw.githubusercontent.com/morechocolate2017/RobotCommandCode2017/master/autonomous-dashboard-selection.png "Autonomous Mode Selection")
+
 ### Teleop Mode
 
 #### Summary
@@ -47,4 +59,28 @@ Teleop Mode is used for the remainder of the match after the autonomous mode por
 ![Logitech F310 Gamepad Map](https://raw.githubusercontent.com/morechocolate2017/RobotCommandCode2017/master/gamepad-map.png "Logitech F310 Gamepad Map")
 
 
-A second person on our Drive Team uses a seperate joystick for the mechanical operations of our robot such as operating the winch, and collecting/dispensing fuel.
+We use a seperate joystick for the mechanical operations of our robot such as operating the winch, and collecting/dispensing fuel.
+
+## Troubleshooting
+
+### Autonomous
+
+**All the Robot's motors are not going the forward when attempting to move forward?**
+
+Got to the *DriveTrain.java* file and locate the following method:
+
+```java
+public void invertMotors(boolean shouldInvert) {
+		
+		firstDiabloDrive.setInvertedMotor(MotorType.kFrontLeft, shouldInvert);
+		firstDiabloDrive.setInvertedMotor(MotorType.kFrontRight, shouldInvert);
+		secondDiabloDrive.setInvertedMotor(MotorType.kFrontLeft, shouldInvert);
+		secondDiabloDrive.setInvertedMotor(MotorType.kFrontRight, shouldInvert);
+}
+```
+
+and start changing incorrect motors to the following, replacing the *ROBOT_DRIVE_OBJECT* and *MOTOR_TYPE* with the same text that was present in the old line, don't forget to comment out the old line once you add the modified one.
+
+```java
+ROBOT_DRIVE_OBJECT.setInvertedMotor(MOTOR_TYPE, shouldInvert ? false : true);
+````
