@@ -67,7 +67,7 @@ A second person on our Drive Team uses a seperate joystick for the mechanical op
 
 **All the Robot's motors are not going the forward when attempting to move forward?**
 
-Got to the *DriveTrain.java* file and locate the following method:
+Go to the *DriveTrain.java* file under the *Subsystems* folder and locate the following method:
 
 ```java
 public void invertMotors(boolean shouldInvert) {
@@ -83,4 +83,4 @@ and start changing incorrect motors to the following, replacing the *ROBOT_DRIVE
 
 ```java
 ROBOT_DRIVE_OBJECT.setInvertedMotor(MOTOR_TYPE, shouldInvert ? false : true);
-````
+```
