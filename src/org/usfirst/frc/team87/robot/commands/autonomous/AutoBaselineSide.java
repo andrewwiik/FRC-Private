@@ -9,7 +9,12 @@ public class AutoBaselineSide extends CommandGroup {
 
     public AutoBaselineSide() {
 
-    	// The Robot moves 10 feet forward to cross the baseline
+    	/* P.E.B wanted there to be autonomous mode where the robot just crosses
+    	 * the baseline, so this is exactly that. This CommandGroup is for if the
+    	 * robot is in the left or right starting position. The robot will go 10
+    	 * feet forward.
+    	 */
+    	
     	addSequential(new AutoDriveDistance(120.0, RobotMap.AUTO_MOVE_FAST_SPEED));
     	
     }
