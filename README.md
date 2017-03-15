@@ -59,7 +59,7 @@ Teleop Mode is used for the remainder of the match after the autonomous mode por
 ![Logitech F310 Gamepad Map](https://raw.githubusercontent.com/morechocolate2017/RobotCommandCode2017/master/gamepad-map.png "Logitech F310 Gamepad Map")
 
 
-We use a seperate joystick for the mechanical operations of our robot such as operating the winch, and collecting/dispensing fuel.
+A second person on our Drive Team uses a seperate joystick for the mechanical operations of our robot such as operating the winch, and collecting/dispensing fuel.
 
 ## Troubleshooting
 
