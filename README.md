@@ -49,7 +49,7 @@ Make sure the driver station is using the "Default" Dashboard Type as pictured b
 ##### Step 2
 Select the desired autonomous mode using the field highlighted in the picture below.
 
-![Autonomous Mode Selection Step 2](https://raw.githubusercontent.com/andrewwiik/FRC-Private/master/autonomous-dashboard-selection.png "Autonomous Mode Selection")
+![Autonomous Mode Selection Step 2](https://raw.githubusercontent.com/andrewwiik/FRC-Private/master/autonomous-dashboard-selection.png?token=AK3o2S7AZM79gZ2fek8LVqK28p5vD1Sbks5Y098lwA%3D%3D "Autonomous Mode Selection")
 
 ### Teleop Mode
 
