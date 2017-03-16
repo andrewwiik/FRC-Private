@@ -44,19 +44,19 @@ When in autonomous our motors are inverted because our gear holder aka the "cere
 ##### Step 1
 Make sure the driver station is using the "Default" Dashboard Type as pictured below.
 
-![Autonomous Mode Selection Step 1](https://raw.githubusercontent.com/morechocolate2017/RobotCommandCode2017/master/autonomous-dashboard-type.png "Dashboard Type Selection")
+![Autonomous Mode Selection Step 1](https://raw.githubusercontent.com/andrewwiik/FRC-Private/master/autonomous-dashboard-type.png "Dashboard Type Selection")
 
 ##### Step 2
 Select the desired autonomous mode using the field highlighted in the picture below.
 
-![Autonomous Mode Selection Step 2](https://raw.githubusercontent.com/morechocolate2017/RobotCommandCode2017/master/autonomous-dashboard-selection.png "Autonomous Mode Selection")
+![Autonomous Mode Selection Step 2](https://raw.githubusercontent.com/andrewwiik/FRC-Private/master/autonomous-dashboard-selection.png "Autonomous Mode Selection")
 
 ### Teleop Mode
 
 #### Summary
 Teleop Mode is used for the remainder of the match after the autonomous mode portion is complete. For the tele-operated portion of the match we are using a Logitech F310 Gamepad as our primary input device to control our robot. The mapping of the controls on the gamepad are as depicted below:
 
-![Logitech F310 Gamepad Map](https://raw.githubusercontent.com/morechocolate2017/RobotCommandCode2017/master/gamepad-map.png "Logitech F310 Gamepad Map")
+![Logitech F310 Gamepad Map](https://raw.githubusercontent.com/andrewwiik/FRC-Private/master/gamepad-map.png "Logitech F310 Gamepad Map")
 
 
 A second person on our Drive Team uses a seperate joystick for the mechanical operations of our robot such as operating the winch, and collecting/dispensing fuel.
