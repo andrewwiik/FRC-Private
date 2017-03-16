@@ -56,7 +56,7 @@ Select the desired autonomous mode using the field highlighted in the picture be
 #### Summary
 Teleop Mode is used for the remainder of the match after the autonomous mode portion is complete. For the tele-operated portion of the match we are using a Logitech F310 Gamepad as our primary input device to control our robot. The mapping of the controls on the gamepad are as depicted below:
 
-![Logitech F310 Gamepad Map](https://raw.githubusercontent.com/andrewwiik/FRC-Private/master/gamepad-map.png "Logitech F310 Gamepad Map")
+![Logitech F310 Gamepad Map](https://raw.githubusercontent.com/andrewwiik/FRC-Private/master/gamepad-map.png?token=AK3o2TJEtloMS8ZbwCdu9WKcCNpOFtR6ks5Y09-owA%3D%3D "Logitech F310 Gamepad Map")
 
 
 A second person on our Drive Team uses a seperate joystick for the mechanical operations of our robot such as operating the winch, and collecting/dispensing fuel.
