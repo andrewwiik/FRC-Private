@@ -44,7 +44,7 @@ When in autonomous our motors are inverted because our gear holder aka the "cere
 ##### Step 1
 Make sure the driver station is using the "Default" Dashboard Type as pictured below.
 
-![Autonomous Mode Selection Step 1](https://raw.githubusercontent.com/andrewwiik/FRC-Private/master/autonomous-dashboard-type.png "Dashboard Type Selection")
+![Autonomous Mode Selection Step 1](https://raw.githubusercontent.com/andrewwiik/FRC-Private/master/autonomous-dashboard-type.png?token=AK3o2UxZ_a7TsCI1ZSzT4pVkBU-iafVkks5Y099gwA%3D%3D "Dashboard Type Selection")
 
 ##### Step 2
 Select the desired autonomous mode using the field highlighted in the picture below.
