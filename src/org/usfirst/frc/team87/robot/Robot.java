@@ -2,6 +2,8 @@ package org.usfirst.frc.team87.robot;
 
 import org.usfirst.frc.team87.robot.commands.TeleDrive;
 import org.usfirst.frc.team87.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team87.robot.subsystems.Intake;
+import org.usfirst.frc.team87.robot.subsystems.Output;
 import org.usfirst.frc.team87.robot.subsystems.Winch;
 import org.usfirst.frc.team87.robot.testing.TestingCommandGroup;
 
@@ -22,6 +24,9 @@ public class Robot extends IterativeRobot {
 	////////////////
 	public static DriveTrain driveTrain;
 	public static Winch winch;
+
+	public static Output output;
+	public static Intake intake;
 
 	//////////////
 	// COMMANDS //
