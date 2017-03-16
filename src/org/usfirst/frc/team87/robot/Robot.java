@@ -1,11 +1,11 @@
 package org.usfirst.frc.team87.robot;
 
-import org.usfirst.frc.team87.robot.commands.TeleDrive;
 import org.usfirst.frc.team87.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team87.robot.subsystems.Intake;
 import org.usfirst.frc.team87.robot.subsystems.Output;
 import org.usfirst.frc.team87.robot.subsystems.Winch;
 import org.usfirst.frc.team87.robot.testing.TestingCommandGroup;
+import org.usfirst.frc.team87.robot.commands.teleop.Teleop;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -78,13 +78,12 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
 		driveTrain.invertMotors(false);
 		driveTrain.resetGyro();
-		new TeleDrive().start();
+		new Teleop().start();
 	}
 
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		oi.backwardsCheck();
 
 	}
 

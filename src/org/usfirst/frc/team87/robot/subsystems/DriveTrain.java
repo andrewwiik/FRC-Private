@@ -14,6 +14,9 @@ public class DriveTrain extends Subsystem {
 	public static RobotDrive firstDiabloDrive;
 	public static RobotDrive secondDiabloDrive;
 	public static ADXRS450_Gyro gyro;
+	
+	public static boolean backwardsButton = false;
+	public static boolean backwardsToggle = false;
 //	
 //	public boolean isTurnOnly = true;
 
@@ -89,5 +92,30 @@ public class DriveTrain extends Subsystem {
 
 	public double getGyro() {
 		return gyro.getAngle();
+	}
+	
+	public void backwardsCheck() {
+		if (backwardsButton && !RobotMap.gamepad.getRawButton(RobotMap.REVERSE)) {
+			backwardsButton = false;
+		} else if (!backwardsButton && RobotMap.gamepad.getRawButton(RobotMap.REVERSE)) {
+			backwardsButton = true;
+			backwardsToggle = !backwardsToggle;
+		}
+	}
+	
+	public double getLeftSpeed() {
+		return RobotMap.gamepad.getRawAxis(RobotMap.LEFTDRIVECONTROL);
+	}
+
+	public double getRightSpeed() {
+		return RobotMap.gamepad.getRawAxis(RobotMap.RIGHTDRIVECONTROL);
+	}
+	
+	public boolean getBackwards() {
+		return backwardsToggle;
+	}
+
+	public boolean getSlowDown() {
+		return RobotMap.gamepad.getRawButton(RobotMap.SLOWDOWN);
 	}
 }

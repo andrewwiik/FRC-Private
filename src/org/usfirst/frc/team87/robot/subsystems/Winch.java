@@ -25,6 +25,10 @@ public class Winch extends Subsystem {
 			winchR.set(0);
 		}
 	}
+	
+	public double getSpeed() {
+		return RobotMap.joystick.getRawAxis(RobotMap.WINCH);
+	}
 
 	public void initDefaultCommand() {
 	}

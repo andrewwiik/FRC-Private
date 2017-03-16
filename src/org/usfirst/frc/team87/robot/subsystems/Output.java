@@ -24,6 +24,10 @@ public class Output extends Subsystem {
 			fuelOut.set(Relay.Value.kOff);
 		}
 	}
+	
+	public boolean getOutput(){
+		return RobotMap.joystick.getRawButton(RobotMap.OUTPUT);
+	}
 
 	public void initDefaultCommand() {
 	}

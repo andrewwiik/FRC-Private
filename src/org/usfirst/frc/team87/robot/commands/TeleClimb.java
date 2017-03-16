@@ -11,7 +11,7 @@ public class TeleClimb extends Command {
 	}
 
 	protected void execute() {
-		Robot.winch.climb(Robot.oi.getWinchSpeed());
+		Robot.winch.climb(Robot.winch.getSpeed());
 	}
 
 	protected boolean isFinished() {

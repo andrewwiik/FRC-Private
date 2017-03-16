@@ -1,6 +1,7 @@
 package org.usfirst.frc.team87.robot;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Ultrasonic;
 
@@ -97,6 +98,9 @@ public class RobotMap {
     
     public static Ultrasonic ultrasonic;
     
+    public static Joystick joystick;
+    public static Joystick gamepad;
+    
     //  public static UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     //	public static UsbCamera gearCamera = new UsbCamera("cam0", 0);
 
@@ -118,9 +122,12 @@ public class RobotMap {
 
     	rightEncoder = new Encoder(ENC_r_1, ENC_r_2, false, Encoder.EncodingType.k4X);
     	rightEncoder.setDistancePerPulse(INCH_TO_ENC);
-    	
+ 
     	ultrasonic =  new Ultrasonic(ULTRA_OUT, ULTRA_IN);
     	ultrasonic.setAutomaticMode(true);
+    	
+    	joystick = new Joystick(JOYSTICK);
+    	gamepad = new Joystick(GAMEPAD);
 
 
     }

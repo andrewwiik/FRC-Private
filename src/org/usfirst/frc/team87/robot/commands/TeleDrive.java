@@ -13,13 +13,14 @@ public class TeleDrive extends Command {
 	}
 
 	protected void execute() {
-		double leftSpeed = Robot.oi.getLeftSpeed();
-		double rightSpeed = Robot.oi.getRightSpeed();
-		if (Robot.oi.getSlowDown()) {
+		Robot.driveTrain.backwardsCheck();
+		double leftSpeed = Robot.driveTrain.getLeftSpeed();
+		double rightSpeed = Robot.driveTrain.getRightSpeed();
+		if (Robot.driveTrain.getSlowDown()) {
 			leftSpeed *= RobotMap.SLOWDOWNSPEED;
 			rightSpeed *= RobotMap.SLOWDOWNSPEED;
 		}
-		if (Robot.oi.getBackwards()) {
+		if (Robot.driveTrain.getBackwards()) {
 			Robot.driveTrain.tankDrive(-rightSpeed, -leftSpeed);
 		} else {
 			Robot.driveTrain.tankDrive(leftSpeed, rightSpeed);
