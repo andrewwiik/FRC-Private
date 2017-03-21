@@ -14,7 +14,7 @@ public class AutoDriveDistance extends Command {
 	private Timer time = new Timer();
 
     public AutoDriveDistance(double inches_in, double speed_in) {
-    	requires(Robot.driveTrain);
+    	//requires(Robot.driveTrain);
     	this.inches = inches_in;
     	this.speed = speed_in;
     }

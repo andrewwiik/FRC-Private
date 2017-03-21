@@ -7,16 +7,19 @@ import org.usfirst.frc.team87.robot.commands.autonomous.*;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 public class AutonomousSelection {
 	
-	public SmartDashboard dashboard;
+	public NetworkTable dashboard;
 	
 	public AutonomousSelection() {
-		dashboard = new SmartDashboard();
 	}
 	
 	public void setupSelections() {
+		if (dashboard == null) {
+			dashboard = NetworkTable.getTable("SmartDashboard");
+		}
 		String[] choices = new String[] {"Left Gear Peg (backup after)", 
 										 "Center Gear Peg (backup after)",
 										 "Right Gear Peg (backup after)", 

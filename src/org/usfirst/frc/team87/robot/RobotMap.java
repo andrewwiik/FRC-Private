@@ -3,6 +3,7 @@ package org.usfirst.frc.team87.robot;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Ultrasonic;
 
 public class RobotMap {
@@ -92,6 +93,11 @@ public class RobotMap {
     public static Spark driveTrainSecondLeftMotor;
     public static Spark driveTrainFirstRightMotor;
     public static Spark driveTrainSecondRightMotor;
+    
+    public static Talon driveTrainFirstLeftMotorSim;
+    public static Talon driveTrainSecondLeftMotorSim;
+    public static Talon driveTrainFirstRightMotorSim;
+    public static Talon driveTrainSecondRightMotorSim;
 
     public static Encoder leftEncoder;
     public static Encoder rightEncoder;
@@ -105,29 +111,43 @@ public class RobotMap {
     //	public static UsbCamera gearCamera = new UsbCamera("cam0", 0);
 
     public static void init() {
-    	driveTrainFirstLeftMotor = new Spark(DRIVE_L1);
-    	driveTrainFirstLeftMotor.enableDeadbandElimination(true);
-
-    	driveTrainSecondLeftMotor = new Spark(DRIVE_L2);
-    	driveTrainSecondLeftMotor.enableDeadbandElimination(true);
-
-    	driveTrainFirstRightMotor = new Spark(DRIVE_R1);
-    	driveTrainFirstRightMotor.enableDeadbandElimination(true);
-
-    	driveTrainSecondRightMotor = new Spark(DRIVE_R2);
-    	driveTrainSecondRightMotor.enableDeadbandElimination(true);
-
-    	leftEncoder = new Encoder(ENC_l_1, ENC_l_2, false, Encoder.EncodingType.k4X);
-    	leftEncoder.setDistancePerPulse(INCH_TO_ENC);
-
-    	rightEncoder = new Encoder(ENC_r_1, ENC_r_2, false, Encoder.EncodingType.k4X);
-    	rightEncoder.setDistancePerPulse(INCH_TO_ENC);
- 
-    	ultrasonic =  new Ultrasonic(ULTRA_OUT, ULTRA_IN);
-    	ultrasonic.setAutomaticMode(true);
-    	
-    	joystick = new Joystick(JOYSTICK);
-    	gamepad = new Joystick(GAMEPAD);
+    	if (Robot.isReal()) {
+	    	driveTrainFirstLeftMotor = new Spark(DRIVE_L1);
+	    	((Spark)driveTrainFirstLeftMotor).enableDeadbandElimination(true);
+	
+	    	driveTrainSecondLeftMotor = new Spark(DRIVE_L2);
+	    	((Spark)driveTrainSecondLeftMotor).enableDeadbandElimination(true);
+	
+	    	driveTrainFirstRightMotor = new Spark(DRIVE_R1);
+	    	((Spark)driveTrainFirstRightMotor).enableDeadbandElimination(true);
+	
+	    	driveTrainSecondRightMotor = new Spark(DRIVE_R2);
+	    	((Spark)driveTrainSecondRightMotor).enableDeadbandElimination(true);
+	
+	    	leftEncoder = new Encoder(ENC_l_1, ENC_l_2, false, Encoder.EncodingType.k4X);
+	    	leftEncoder.setDistancePerPulse(INCH_TO_ENC);
+	
+	    	rightEncoder = new Encoder(ENC_r_1, ENC_r_2, false, Encoder.EncodingType.k4X);
+	    	rightEncoder.setDistancePerPulse(INCH_TO_ENC);
+	 
+	    	ultrasonic =  new Ultrasonic(ULTRA_OUT, ULTRA_IN);
+	    	ultrasonic.setAutomaticMode(true);
+	    	
+	    	joystick = new Joystick(JOYSTICK);
+	    	gamepad = new Joystick(GAMEPAD);
+    	} else {
+    		driveTrainFirstLeftMotorSim = new Talon(1);
+    		driveTrainSecondLeftMotorSim = new Talon(2);
+    		driveTrainFirstRightMotorSim = new Talon(3);
+    		driveTrainSecondRightMotorSim = new Talon(4);
+    		
+    		leftEncoder = new Encoder(1, 2);
+	    	rightEncoder = new Encoder(3, 4);
+	    	
+	    	leftEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 360.0);
+			rightEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 360.0);
+    		
+    	}
 
 
     }

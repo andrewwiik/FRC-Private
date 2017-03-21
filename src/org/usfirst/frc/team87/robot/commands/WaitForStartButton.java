@@ -12,7 +12,7 @@ public class WaitForStartButton extends Command {
 	
 	public WaitForStartButton() {
 		isFinished = false;
-		DriverStation.reportWarning("Please press the 'Start' button on the gamepad to continue", false);
+		//DriverStation.reportWarning("Please press the 'Start' button on the gamepad to continue", false);
 	}
 	
 	protected void execute() {

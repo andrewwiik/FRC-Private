@@ -1,11 +1,13 @@
 package org.usfirst.frc.team87.robot.subsystems;
 
+import org.usfirst.frc.team87.robot.Robot;
 import org.usfirst.frc.team87.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.AnalogGyro;
 
 /**
  *
@@ -14,6 +16,7 @@ public class DriveTrain extends Subsystem {
 	public static RobotDrive firstDiabloDrive;
 	public static RobotDrive secondDiabloDrive;
 	public static ADXRS450_Gyro gyro;
+	public static AnalogGyro simGyro;
 	
 	public static boolean backwardsButton = false;
 	public static boolean backwardsToggle = false;
@@ -21,9 +24,15 @@ public class DriveTrain extends Subsystem {
 //	public boolean isTurnOnly = true;
 
 	public DriveTrain() {
-		firstDiabloDrive = new RobotDrive(RobotMap.driveTrainFirstLeftMotor, RobotMap.driveTrainFirstRightMotor);
-		secondDiabloDrive = new RobotDrive(RobotMap.driveTrainSecondRightMotor, RobotMap.driveTrainSecondRightMotor);
-		gyro = new ADXRS450_Gyro();
+		if (Robot.isReal()) {
+			firstDiabloDrive = new RobotDrive(RobotMap.driveTrainFirstLeftMotor, RobotMap.driveTrainFirstRightMotor);
+			secondDiabloDrive = new RobotDrive(RobotMap.driveTrainSecondRightMotor, RobotMap.driveTrainSecondRightMotor);
+			gyro = new ADXRS450_Gyro();
+		} else {
+			firstDiabloDrive = new RobotDrive(RobotMap.driveTrainFirstLeftMotorSim, RobotMap.driveTrainFirstRightMotorSim);
+			secondDiabloDrive = new RobotDrive(RobotMap.driveTrainSecondRightMotorSim, RobotMap.driveTrainSecondRightMotorSim);
+			simGyro = new AnalogGyro(1);
+		}
 	}
 
 
@@ -83,15 +92,27 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void initGyro() {
-		gyro.calibrate();
+		if (Robot.isReal()) {
+			gyro.calibrate();
+		} else {
+			simGyro.calibrate();
+		}
 	}
 
 	public void resetGyro() {
-		gyro.reset();
+		if (Robot.isReal()) {
+			gyro.reset();
+		} else {
+			simGyro.reset();
+		}
 	}
 
 	public double getGyro() {
-		return gyro.getAngle();
+		if (Robot.isReal()) {
+			return gyro.getAngle();
+		} else {
+			return simGyro.getAngle();
+		}
 	}
 	
 	public void backwardsCheck() {
