@@ -2,7 +2,6 @@ package org.usfirst.frc.team87.robot.commands.autonomous;
 
 import org.usfirst.frc.team87.robot.RobotMap;
 import org.usfirst.frc.team87.robot.commands.AutoDriveDistance;
-import org.usfirst.frc.team87.robot.commands.AutoTurn;
 import org.usfirst.frc.team87.robot.commands.Wait;
 import org.usfirst.frc.team87.robot.commands.WaitForGearRemoval;
 
