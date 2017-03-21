@@ -1,3 +1,5 @@
+![Red Devils Logo](https://raw.githubusercontent.com/andrewwiik/FRC-Private/master/Red-Devils-Logo.png?token=AK3o2UxZ_a7TsCI1ZSzT4pVkBU-iafVkks5Y099gwA%3D%3D "Red Devils Logo")
+
 # 2017 GearWorks Robot Code for RVR87
 
 ## Robot Build
