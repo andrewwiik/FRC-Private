@@ -15,7 +15,7 @@ public class AutoBaseline extends CommandGroup {
     	 * feet forward.
     	 */
     	
-    	addSequential(new AutoDriveDistance(180, RobotMap.AUTO_MOVE_FAST_SPEED));
+    	addSequential(new AutoDriveDistance(180, RobotMap.AUTO_MOVE_FAST_SPEED, true));
     	
     }
 }

@@ -8,25 +8,31 @@ import org.usfirst.frc.team87.robot.commands.WaitForGearRemoval;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class AutoLeftRedAlliance extends CommandGroup {
+public class AutoRightGear extends CommandGroup {
 
-    public AutoLeftRedAlliance(boolean withBackup) {
+    public AutoRightGear(boolean withBackup) {
 
-    	// Move approximately 86 inches forward
-    	addSequential(new AutoDriveDistance(86.632, RobotMap.AUTO_MOVE_SPEED));
+    	// Move the robot approx 86 inches forward
+    	addSequential(new AutoDriveDistance(80.0, RobotMap.AUTO_MOVE_SPEED, false));
     	
-    	// turn 60 degrees to the right
-    	addSequential(new AutoTurn(60.0,RobotMap.TURN_SLOW_SPEED));
+    	addSequential(new AutoDriveDistance(6.632, RobotMap.AUTO_MOVE_SPEED, true));
+
+    	// Turn the robot 60 degreess to the left
+    	addSequential(new AutoTurn(-60.0,RobotMap.TURN_SLOW_SPEED));
     	
-    	// Go forward 36 inches forward at a slower speed to ensure smooth gear placement
-    	addSequential(new AutoDriveDistance(36.0, RobotMap.AUTO_MOVE_SLOW_SPEED));
+    	/* Move the robot 36 inches forward at a slower speed to ensure smooth
+    	 * gear placement.
+    	 */
+ 
+    	addSequential(new AutoDriveDistance(36.0, RobotMap.AUTO_MOVE_SLOW_SPEED, true));
+    	
     	
     	if (withBackup) {
     		
 	    	/* The robot waits for the ultrasonic sensor to detect that
 	    	 * the gear has been removed from its "cereal box" holder
 	    	 */
-    	
+	    	
 	    	addSequential(new WaitForGearRemoval());
 	    	
 	    	/* Per P.E.B's decision that the robot should wait 3 seconds
@@ -41,7 +47,7 @@ public class AutoLeftRedAlliance extends CommandGroup {
 	    	 * We start moving away from the gear holder peg.
 	    	 */
 	    	
-	    	addSequential(new AutoDriveDistance(-40.0, -1 * RobotMap.AUTO_MOVE_SPEED));
+	    	addSequential(new AutoDriveDistance(-40.0, -1 * RobotMap.AUTO_MOVE_SPEED, true));
 	    	
 	    	/* The robot was going to start moving towards the gear dispenser
 	    	 * on the opposite side of the field but it was decided by P.E.B that
@@ -50,8 +56,9 @@ public class AutoLeftRedAlliance extends CommandGroup {
 	    	 * being.
 	    	 */
 	    	
-	    	// addSequential(new AutoTurn(-60, RobotMap.TURN_FAST_SPEED));
+	    	// addSequential(new AutoTurn(60, RobotMap.TURN_FAST_SPEED));
 	    	// addSequential(new AutoDriveDistance(200.0, RobotMap.AUTO_MOVE_SPEED));
     	}
+    	
     }
 }

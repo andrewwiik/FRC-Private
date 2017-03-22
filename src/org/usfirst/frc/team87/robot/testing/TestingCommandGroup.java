@@ -18,7 +18,7 @@ public class TestingCommandGroup extends CommandGroup {
 		 * autonomous mode.
 		 */
 		
-		addSequential(new AutoDriveDistance(36, RobotMap.AUTO_MOVE_SPEED));
+		addSequential(new AutoDriveDistance(36, RobotMap.AUTO_MOVE_SPEED, true));
 		
 		/* Wait for start button to be pressed before beginning 
 		 * the backup test
@@ -30,7 +30,7 @@ public class TestingCommandGroup extends CommandGroup {
 		 * mode.
 		 */
 		
-		addSequential(new AutoDriveDistance(-12, RobotMap.AUTO_MOVE_SPEED));
+		addSequential(new AutoDriveDistance(-12, RobotMap.AUTO_MOVE_SPEED, true));
 		
 		/* Wait for start button to be pressed before beginning 
 		 * the rotate right test
@@ -42,7 +42,7 @@ public class TestingCommandGroup extends CommandGroup {
 		 * mode.
 		 */
 		
-		addSequential(new AutoTurn(-90, RobotMap.TURN_MED_SPEED));
+		addSequential(new AutoTurn(90, RobotMap.TURN_MED_SPEED));
 		
 		/* Wait for the start button before doing the rotate right test as
 		 * if in autonomous mode.
@@ -54,7 +54,7 @@ public class TestingCommandGroup extends CommandGroup {
 		 * mode.
 		 */
 		
-		addSequential(new AutoTurn(180, RobotMap.TURN_MED_SPEED));
+		addSequential(new AutoTurn(-180, RobotMap.TURN_MED_SPEED));
 		
 		
 	}

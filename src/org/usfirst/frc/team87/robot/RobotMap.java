@@ -1,5 +1,7 @@
 package org.usfirst.frc.team87.robot;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
@@ -80,12 +82,15 @@ public class RobotMap {
 
 	public static final double AUTO_MOVE_SPEED = 0.6;
 	public static final double AUTO_MOVE_MEDIUM_SPEED = 0.52;
-	public static final double AUTO_MOVE_SLOW_SPEED = 0.40;
+	public static final double AUTO_MOVE_SLOW_SPEED = 0.35;
 	public static final double AUTO_MOVE_FAST_SPEED = 0.75;
 	
 	public static final double TURN_SLOW_SPEED = 0.52;
 	public static final double TURN_MED_SPEED = 0.54;
 	public static final double TURN_FAST_SPEED = 0.56;
+	
+	public static final double ANGLETOLERANCE = 0.75;
+	public static final double DISTANCETOLERANCE = 0.5;
 	
 	// public static final int ringLight = 0; // Needs to be changed to the correct mapping
 	
@@ -106,6 +111,9 @@ public class RobotMap {
     
     public static Joystick joystick;
     public static Joystick gamepad;
+    
+    public static ADXRS450_Gyro gyro;
+	public static AnalogGyro simGyro;
     
     //  public static UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     //	public static UsbCamera gearCamera = new UsbCamera("cam0", 0);
@@ -135,6 +143,8 @@ public class RobotMap {
 	    	
 	    	joystick = new Joystick(JOYSTICK);
 	    	gamepad = new Joystick(GAMEPAD);
+	    	
+	    	gyro = new ADXRS450_Gyro();
     	} else {
     		driveTrainFirstLeftMotorSim = new Talon(1);
     		driveTrainSecondLeftMotorSim = new Talon(2);
@@ -144,8 +154,10 @@ public class RobotMap {
     		leftEncoder = new Encoder(1, 2);
 	    	rightEncoder = new Encoder(3, 4);
 	    	
-	    	leftEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 360.0);
-			rightEncoder.setDistancePerPulse((4.0 / 12.0 * Math.PI) / 360.0);
+	    	leftEncoder.setDistancePerPulse((4.0 * Math.PI) * (1/360.0));
+			rightEncoder.setDistancePerPulse((4.0 * Math.PI) * (1/360.0));
+			
+			simGyro = new AnalogGyro(1);
     		
     	}
 

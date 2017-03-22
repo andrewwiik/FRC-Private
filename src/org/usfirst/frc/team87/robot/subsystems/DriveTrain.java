@@ -8,15 +8,16 @@ import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.PIDSource;
 
 /**
  *
  */
 public class DriveTrain extends Subsystem {
-	public static RobotDrive firstDiabloDrive;
-	public static RobotDrive secondDiabloDrive;
-	public static ADXRS450_Gyro gyro;
-	public static AnalogGyro simGyro;
+	public RobotDrive firstDiabloDrive;
+	public RobotDrive secondDiabloDrive;
+	public ADXRS450_Gyro gyro = RobotMap.gyro;
+	public AnalogGyro simGyro = RobotMap.simGyro;
 	
 	public static boolean backwardsButton = false;
 	public static boolean backwardsToggle = false;
@@ -26,29 +27,50 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain() {
 		if (Robot.isReal()) {
 			firstDiabloDrive = new RobotDrive(RobotMap.driveTrainFirstLeftMotor, RobotMap.driveTrainFirstRightMotor);
-			secondDiabloDrive = new RobotDrive(RobotMap.driveTrainSecondRightMotor, RobotMap.driveTrainSecondRightMotor);
-			gyro = new ADXRS450_Gyro();
+			secondDiabloDrive = new RobotDrive(RobotMap.driveTrainSecondLeftMotor, RobotMap.driveTrainSecondRightMotor);
 		} else {
-			firstDiabloDrive = new RobotDrive(RobotMap.driveTrainFirstLeftMotorSim, RobotMap.driveTrainFirstRightMotorSim);
-			secondDiabloDrive = new RobotDrive(RobotMap.driveTrainSecondRightMotorSim, RobotMap.driveTrainSecondRightMotorSim);
-			simGyro = new AnalogGyro(1);
+			secondDiabloDrive = new RobotDrive(RobotMap.driveTrainFirstLeftMotorSim, RobotMap.driveTrainSecondLeftMotorSim, RobotMap.driveTrainFirstRightMotorSim, RobotMap.driveTrainSecondRightMotorSim);
 		}
 	}
 
 
 	public void drive(double outputMagnitude, double curve) {
-		firstDiabloDrive.drive(outputMagnitude, curve);
-		secondDiabloDrive.drive(outputMagnitude, curve);
+		if (Robot.isReal()) {
+			firstDiabloDrive.drive(outputMagnitude, curve);
+			secondDiabloDrive.drive(outputMagnitude, curve);
+		} else {
+			secondDiabloDrive.drive(outputMagnitude, curve);
+		}
 	}
 
 	public void tankDrive(double leftValue, double rightValue) {
-		firstDiabloDrive.tankDrive(leftValue, rightValue);
-		secondDiabloDrive.tankDrive(leftValue, rightValue);
+		if (Robot.isReal()) {
+			firstDiabloDrive.tankDrive(leftValue, rightValue);
+			secondDiabloDrive.tankDrive(leftValue, rightValue);
+		} else {
+			secondDiabloDrive.tankDrive(leftValue, rightValue);
+		}
 	}
 	
 	public void arcadeDrive(double moveValue, double rotateValue) {
-		firstDiabloDrive.arcadeDrive(moveValue, rotateValue);
-		secondDiabloDrive.arcadeDrive(moveValue, rotateValue);
+		if (Robot.isReal()) {
+			firstDiabloDrive.arcadeDrive(moveValue, rotateValue);
+			secondDiabloDrive.arcadeDrive(moveValue, rotateValue);
+		} else {
+			secondDiabloDrive.arcadeDrive(moveValue, rotateValue);
+		}
+	}
+	
+	public void setDrive(double left, double right) {
+		if (Robot.isReal()) {
+			RobotMap.driveTrainFirstLeftMotorSim.set(left);
+			RobotMap.driveTrainFirstRightMotorSim.set(right);
+			RobotMap.driveTrainSecondLeftMotorSim.set(left);
+			RobotMap.driveTrainSecondRightMotorSim.set(right);
+		} else {
+			RobotMap.driveTrainSecondLeftMotorSim.set(left);
+			RobotMap.driveTrainSecondRightMotorSim.set(right);
+		}
 	}
 	
 	public void resetEncoders() {
@@ -57,11 +79,33 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public double getLeftEncoderValue() {
-		return RobotMap.leftEncoder.get();
+		return RobotMap.leftEncoder.getDistance();
 	}
 	
 	public double getRightEncoderValue() {
-		return RobotMap.rightEncoder.get();
+		return RobotMap.rightEncoder.getDistance();
+	}
+	
+	public double getEncoderValue() {
+		return (RobotMap.rightEncoder.getDistance() + RobotMap.leftEncoder.getDistance())/2;
+	}
+	
+	public void setLeftMotorSpeed(double speed) {
+		if (Robot.isReal()) {
+			RobotMap.driveTrainFirstLeftMotor.set(speed);
+			RobotMap.driveTrainSecondLeftMotor.set(speed);
+		} else {
+			RobotMap.driveTrainSecondLeftMotor.set(speed);
+		}
+	}
+	
+	public void setRightMotorSpeed(double speed) {
+		if (Robot.isReal()) {
+			RobotMap.driveTrainFirstRightMotor.set(speed);
+			RobotMap.driveTrainSecondRightMotor.set(speed);
+		} else {
+			RobotMap.driveTrainSecondRightMotor.set(speed);
+		}
 	}
 	
 //	public void setSpeed(double right, double left){
@@ -85,10 +129,10 @@ public class DriveTrain extends Subsystem {
 	
 	public void invertMotors(boolean shouldInvert) {
 		
-		firstDiabloDrive.setInvertedMotor(MotorType.kFrontLeft, shouldInvert);
-		firstDiabloDrive.setInvertedMotor(MotorType.kFrontRight, shouldInvert);
-		secondDiabloDrive.setInvertedMotor(MotorType.kFrontLeft, shouldInvert);
-		secondDiabloDrive.setInvertedMotor(MotorType.kFrontRight, shouldInvert);
+//		firstDiabloDrive.setInvertedMotor(MotorType.kFrontLeft, shouldInvert);
+//		firstDiabloDrive.setInvertedMotor(MotorType.kFrontRight, shouldInvert);
+//		secondDiabloDrive.setInvertedMotor(MotorType.kFrontLeft, shouldInvert);
+//		secondDiabloDrive.setInvertedMotor(MotorType.kFrontRight, shouldInvert);
 	}
 	
 	public void initGyro() {
@@ -112,6 +156,28 @@ public class DriveTrain extends Subsystem {
 			return gyro.getAngle();
 		} else {
 			return simGyro.getAngle();
+		}
+	}
+	
+	public PIDSource getGyroSource() {
+		if (Robot.isReal()) {
+			if (gyro != null)
+				return gyro;
+			else {
+				gyro = new ADXRS450_Gyro();
+				gyro.reset();
+				gyro.calibrate();
+				return gyro;
+			}
+		} else {
+			if (simGyro != null)
+				return simGyro;
+			else {
+				simGyro = new AnalogGyro(1);
+				simGyro.reset();
+				simGyro.calibrate();
+				return simGyro;
+			}
 		}
 	}
 	

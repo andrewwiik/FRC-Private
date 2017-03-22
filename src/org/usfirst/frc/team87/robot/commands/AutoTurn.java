@@ -25,10 +25,10 @@ public class AutoTurn extends Command {
     protected void execute() {
     	if (angle > 0){
     		// If we are turning Right
-    		Robot.driveTrain.tankDrive(this.speed, -this.speed);
+    		Robot.driveTrain.tankDrive(-this.speed, this.speed);
     	} else {
     		// If we are turning Left
-    		Robot.driveTrain.tankDrive(-this.speed, this.speed);
+    		Robot.driveTrain.tankDrive(this.speed, -this.speed);
     	}
     }
 

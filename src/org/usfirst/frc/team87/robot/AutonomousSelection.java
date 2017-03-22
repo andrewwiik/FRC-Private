@@ -4,8 +4,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team87.robot.commands.autonomous.*;
 
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
@@ -32,22 +30,16 @@ public class AutonomousSelection {
 	}
 	
 	public CommandGroup getCommandGroupForSelection() {
-		String selection = SmartDashboard.getString("Auto Selector", "Center Gear Peg (don't backup)").toLowerCase();
+		
+		// You can set the default here
+		String selection = SmartDashboard.getString("Auto Selector", "Center Gear Peg (backup after)").toLowerCase();
 		if (selection.contains("gear")) {
 			if (selection.contains("left")) {
-				if (Alliance.Red.equals(DriverStation.getInstance().getAlliance())) {
-					return new AutoLeftRedAlliance(selection.contains("backup after"));
-				} else {
-					return new AutoLeftBlueAlliance(selection.contains("backup after"));
-				}
+				return new AutoLeftGear(selection.contains("backup after"));
 			} else if (selection.contains("right")) {
-				if (Alliance.Red.equals(DriverStation.getInstance().getAlliance())) {
-					return new AutoRightRedAlliance(selection.contains("backup after"));
-				} else {
-					return new AutoRightBlueAlliance(selection.contains("backup after"));
-				}
+				return new AutoRightGear(selection.contains("backup after"));
 			} else {
-				return new CenterGearAuto(selection.contains("backup after"));
+				return new AutoCenterGear(selection.contains("backup after"));
 			}
 		} else {
 			return new AutoBaseline();
