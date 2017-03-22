@@ -58,7 +58,6 @@ public class Robot extends IterativeRobot {
 		driveTrain.resetGyro();
 		driveTrain.resetEncoders();
 
-		driveTrain.invertMotors(true);
 		// Get the autonomous command group that should be run
 		autonomousCommand = autonomousSelection.getCommandGroupForSelection();
 		
@@ -77,7 +76,6 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		driveTrain.invertMotors(false);
 		driveTrain.resetGyro();
 		new Teleop().start();
 	}
@@ -93,7 +91,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testInit() {
-		driveTrain.invertMotors(true);
 		testCommand.start();
 	}
 	
