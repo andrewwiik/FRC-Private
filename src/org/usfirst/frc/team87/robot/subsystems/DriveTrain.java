@@ -4,7 +4,6 @@ import org.usfirst.frc.team87.robot.Robot;
 import org.usfirst.frc.team87.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
@@ -63,10 +62,10 @@ public class DriveTrain extends Subsystem {
 	
 	public void setDrive(double left, double right) {
 		if (Robot.isReal()) {
-			RobotMap.driveTrainFirstLeftMotorSim.set(left);
-			RobotMap.driveTrainFirstRightMotorSim.set(right);
-			RobotMap.driveTrainSecondLeftMotorSim.set(left);
-			RobotMap.driveTrainSecondRightMotorSim.set(right);
+			RobotMap.driveTrainFirstLeftMotor.set(left);
+			RobotMap.driveTrainFirstRightMotor.set(right);
+			RobotMap.driveTrainSecondLeftMotor.set(left);
+			RobotMap.driveTrainSecondRightMotor.set(right);
 		} else {
 			RobotMap.driveTrainSecondLeftMotorSim.set(left);
 			RobotMap.driveTrainSecondRightMotorSim.set(right);
@@ -95,7 +94,7 @@ public class DriveTrain extends Subsystem {
 			RobotMap.driveTrainFirstLeftMotor.set(speed);
 			RobotMap.driveTrainSecondLeftMotor.set(speed);
 		} else {
-			RobotMap.driveTrainSecondLeftMotor.set(speed);
+			RobotMap.driveTrainSecondLeftMotorSim.set(speed);
 		}
 	}
 	
@@ -104,7 +103,7 @@ public class DriveTrain extends Subsystem {
 			RobotMap.driveTrainFirstRightMotor.set(speed);
 			RobotMap.driveTrainSecondRightMotor.set(speed);
 		} else {
-			RobotMap.driveTrainSecondRightMotor.set(speed);
+			RobotMap.driveTrainSecondRightMotorSim.set(speed);
 		}
 	}
 	
@@ -182,11 +181,13 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void backwardsCheck() {
-		if (backwardsButton && !RobotMap.gamepad.getRawButton(RobotMap.REVERSE)) {
-			backwardsButton = false;
-		} else if (!backwardsButton && RobotMap.gamepad.getRawButton(RobotMap.REVERSE)) {
-			backwardsButton = true;
-			backwardsToggle = !backwardsToggle;
+		if (Robot.isReal()) {
+			if (backwardsButton && !RobotMap.gamepad.getRawButton(RobotMap.REVERSE)) {
+				backwardsButton = false;
+			} else if (!backwardsButton && RobotMap.gamepad.getRawButton(RobotMap.REVERSE)) {
+				backwardsButton = true;
+				backwardsToggle = !backwardsToggle;
+			}
 		}
 	}
 	

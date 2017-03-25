@@ -58,7 +58,9 @@ public class AutoDriveDistance extends Command {
 				
 				left *= 1; // Adjust this if you are drifting (make it lower)
 				right *= 1; // Adjust this if you are drifting (make it lower)
-				Robot.driveTrain.tankDrive(left, right);
+				
+				// Switch the operators if the robot is going the wrong way.
+				Robot.driveTrain.tankDrive(-left, -right);
 
 			}
 		});
