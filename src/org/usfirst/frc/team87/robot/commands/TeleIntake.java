@@ -15,8 +15,8 @@ public class TeleIntake extends Command {
 		this.speed = speed;
 	}
 
-	protected void initialize() {
-		Robot.intake.intake(speed);
+	protected void execute() {
+		Robot.intake.intake(-speed);
 	}
 
 	protected boolean isFinished() {

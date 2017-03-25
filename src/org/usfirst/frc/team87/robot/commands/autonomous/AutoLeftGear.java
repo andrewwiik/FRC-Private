@@ -12,22 +12,34 @@ public class AutoLeftGear extends CommandGroup {
 
     public AutoLeftGear(boolean withBackup) {
 
+    	
+    	if (!RobotMap.useDefaultAutoMeasurements) {
     	// Move the robot approx 86 inches forward
-    	addSequential(new AutoDriveDistance(75.0, RobotMap.AUTO_MOVE_SPEED, false));
-    	addSequential(new AutoDriveDistance(5.0, RobotMap.AUTO_MOVE_MEDIUM_SPEED, false));
-    	addSequential(new AutoDriveDistance(6.632, RobotMap.AUTO_MOVE_SPEED, true));
-    	
-    	// turn 60 degrees to the left
-    	addSequential(new Wait(0.5));
-    	addSequential(new AutoTurn(-60.0,RobotMap.TURN_SLOW_SPEED));
-    	addSequential(new Wait(0.5));
-    	
-    	/* Move the robot 36 inches forward at a slower speed to ensure smooth
-    	 * gear placement.
-    	 */
- 
-    	addSequential(new AutoDriveDistance(36.0, RobotMap.AUTO_MOVE_SLOW_SPEED, true));
-    	
+	    	addSequential(new AutoDriveDistance(75.0, RobotMap.AUTO_MOVE_SPEED, false));
+	    	addSequential(new AutoDriveDistance(5.0, RobotMap.AUTO_MOVE_MEDIUM_SPEED, false));
+	    	addSequential(new AutoDriveDistance(6.632, RobotMap.AUTO_MOVE_SPEED, true));
+	    	
+	    	// turn 60 degrees to the left
+	    	addSequential(new Wait(0.5));
+	    	addSequential(new AutoTurn(-60.0,RobotMap.TURN_SLOW_SPEED));
+	    	addSequential(new Wait(0.5));
+	    	
+	    	/* Move the robot 36 inches forward at a slower speed to ensure smooth
+	    	 * gear placement.
+	    	 */
+	 
+	    	addSequential(new AutoDriveDistance(36.0, RobotMap.AUTO_MOVE_SLOW_SPEED, true));
+	    	
+    	} else {
+    		addSequential(new AutoDriveDistance(73.0, RobotMap.AUTO_MOVE_SPEED, false));
+	    	addSequential(new AutoDriveDistance(5.0, RobotMap.AUTO_MOVE_MEDIUM_SPEED, false));
+	    	addSequential(new AutoDriveDistance(6.563, RobotMap.AUTO_MOVE_SPEED, true));
+			addSequential(new Wait(0.5));
+			addSequential(new AutoTurn(-60.0,RobotMap.TURN_SLOW_SPEED));
+			addSequential(new Wait(0.5));
+			addSequential(new AutoDriveDistance(39.974, RobotMap.AUTO_MOVE_SLOW_SPEED, true));
+			addSequential(new Wait(0.5));
+    	}
     	if (withBackup) {
     		
 	    	/* The robot waits for the ultrasonic sensor to detect that

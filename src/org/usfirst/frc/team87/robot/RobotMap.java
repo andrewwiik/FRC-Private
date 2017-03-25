@@ -9,6 +9,9 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Ultrasonic;
 
 public class RobotMap {
+	
+	
+	public static final boolean useDefaultAutoMeasurements = true;
 	//////////////
 	// CONTROLS //
 	//////////////
@@ -31,22 +34,22 @@ public class RobotMap {
 	public static final int DRIVE_L2 = 1; // Spark and CIM Second Left Motor
 	public static final int DRIVE_R1 = 3; // Spark and CIM First Right Motor
 	public static final int DRIVE_R2 = 4; // Spark and CIM Second Right Motor
-	public static final int FUEL_IN = 2; // VictorSP and Snowblower
-	public static final int FUEL_OUT = 2; // Spike and Window Motor
+	public static final int FUEL_IN = 4; // VictorSP and Snowblower
+	public static final int FUEL_OUT = 0; // Spike and Window Motor
 	public static final int WINCHL = 1; // TalonSRX and Van Door
 	public static final int WINCHR = 2; // TalonSRX and Van Door
 
 	/////////////
 	// SENSORS //
 	/////////////
-	public static final int ENC_l_1 = 6; // Encoders use 2 cables.
-	public static final int ENC_l_2 = 7; // In theory the placement of the ports
-	public static final int ENC_r_1 = 8; // does not matter. This may need some
-	public static final int ENC_r_2 = 9; // extra troubleshooting.
+	public static final int ENC_l_1 = 2; // Encoders use 2 cables.
+	public static final int ENC_l_2 = 3; // In theory the placement of the ports
+	public static final int ENC_r_1 = 0; // does not matter. This may need some
+	public static final int ENC_r_2 = 1; // extra troubleshooting.
 	public static final int ULTRA_IN = 4; // If ultrasonic outputs infinity,
 	public static final int ULTRA_OUT = 5; // switch these two port numbers.
-	public static final int LIMITTOP = 1;
-	public static final int LIMITBOTTOM = 0;
+	public static final int LIMITTOP = 8;
+	public static final int LIMITBOTTOM = 9;
 
 	///////////////
 	// Variables //
