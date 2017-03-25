@@ -44,8 +44,8 @@ public class DriveTrain extends Subsystem {
 
 	public void tankDrive(double leftValue, double rightValue) {
 		if (Robot.isReal()) {
-			firstDiabloDrive.tankDrive(leftValue, rightValue);
-			secondDiabloDrive.tankDrive(leftValue, rightValue);
+			firstDiabloDrive.tankDrive(-leftValue, -rightValue);
+			secondDiabloDrive.tankDrive(-leftValue, -rightValue);
 		} else {
 			secondDiabloDrive.tankDrive(leftValue, rightValue);
 		}
