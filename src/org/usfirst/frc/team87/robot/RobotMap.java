@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Ultrasonic;
 
 public class RobotMap {
 	
+	public static final boolean motorsInverted = true;
 	
 	public static final boolean useDefaultAutoMeasurements = true;
 	//////////////
