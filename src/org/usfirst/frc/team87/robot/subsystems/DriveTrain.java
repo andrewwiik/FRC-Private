@@ -50,6 +50,7 @@ public class DriveTrain extends Subsystem {
 			} else {
 				firstDiabloDrive.tankDrive(leftValue, rightValue);
 				secondDiabloDrive.tankDrive(leftValue, rightValue);
+			}
 		} else {
 			secondDiabloDrive.tankDrive(leftValue, rightValue);
 		}
@@ -57,8 +58,13 @@ public class DriveTrain extends Subsystem {
 	
 	public void arcadeDrive(double moveValue, double rotateValue) {
 		if (Robot.isReal()) {
-			firstDiabloDrive.arcadeDrive(moveValue, rotateValue);
-			secondDiabloDrive.arcadeDrive(moveValue, rotateValue);
+			if (RobotMap.motorsInverted) {
+				firstDiabloDrive.arcadeDrive(-moveValue, rotateValue);
+				secondDiabloDrive.arcadeDrive(-moveValue, rotateValue);
+			} else {
+				firstDiabloDrive.arcadeDrive(moveValue, rotateValue);
+				secondDiabloDrive.arcadeDrive(moveValue, rotateValue);
+			}
 		} else {
 			secondDiabloDrive.arcadeDrive(moveValue, rotateValue);
 		}
